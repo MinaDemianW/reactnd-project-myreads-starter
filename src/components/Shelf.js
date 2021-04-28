@@ -2,7 +2,7 @@ import React from 'react'
 import Book from './Book'
 import PropTypes from 'prop-types'
 
-const Shelf = ({myBooks =[], books=[], name, title, handleStatusChnage, searchBooks}) => {
+const Shelf = ({myBooks =[], books=[], name, title, handleStatusChnage, searchBookShelf}) => {
 
 
     return(
@@ -10,14 +10,14 @@ const Shelf = ({myBooks =[], books=[], name, title, handleStatusChnage, searchBo
             <h2 className="bookshelf-title">{title}</h2>
             <div className="bookshelf-books">
             <ol className="books-grid">
-                {books.length > 0 && books.filter(book => book.shelf === name)
+                {books.filter(book => book.shelf === name)
                 .map(book => (
                     <li key={book.id}>
                         <Book
                             book={book}
                             handleStatusChnage={handleStatusChnage}
                             id= {book.id} 
-                            shelf={book.shelf? book.shelf: searchBooks(book)}
+                            shelf={book.shelf? book.shelf: searchBookShelf(book)}
                             imageLinks={book.imageLinks || {}} 
                             title= {book.title}
                             authors= {book.authors}

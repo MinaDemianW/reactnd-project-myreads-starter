@@ -3,7 +3,7 @@ import Shelf from '../components/Shelf'
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const BooksList =  ({books, handleStatusChnage, searchBooks}) => {
+const BooksList =  ({books, handleStatusChnage, searchBookShelf}) => {
     return(
         <div className="list-books">
             <div className="list-books-title">
@@ -14,21 +14,21 @@ const BooksList =  ({books, handleStatusChnage, searchBooks}) => {
                     <Shelf 
                     books={books}
                     handleStatusChnage={handleStatusChnage}
-                    searchBooks={searchBooks}
+                    searchBookShelf={searchBookShelf}
                     name="currentlyReading" 
                     title="Currently Reading"
                     />
                     <Shelf 
                     books={books}
                     handleStatusChnage={handleStatusChnage}
-                    searchBooks={searchBooks}
+                    searchBookShelf={searchBookShelf}
                     name="wantToRead" 
                     title="Want to Read"
                     />
                     <Shelf 
                     books={books}
                     handleStatusChnage={handleStatusChnage}
-                    searchBooks={searchBooks} 
+                    searchBookShelf={searchBookShelf} 
                     name="read" 
                     title="Read"
                     />

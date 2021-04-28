@@ -5,19 +5,19 @@ import * as BooksAPI from '../BooksAPI'
 import PropTypes from 'prop-types'
 
 
-const SearchList = ({books, handleStatusChnage, searchBooks}) => {
+const SearchList = ({books, handleStatusChnage, searchBookShelf}) => {
   
   const [foundBooks, setFoundBooks] = useState([])
-  const [qurey, setQuery] = useState('')
+  const [query, setQuery] = useState('')
   
   useEffect(() => {
-    if(qurey.length >0){
-      BooksAPI.search(qurey)
+    if(query.length >0){
+      BooksAPI.search(query)
       .then(returnedBooks => setFoundBooks(returnedBooks))
     } else {
       setFoundBooks([])
     }
-  }, [qurey])
+  }, [query])
 
   const handleChange = (evt) => {
     setQuery(evt.target.value)
@@ -33,14 +33,19 @@ const SearchList = ({books, handleStatusChnage, searchBooks}) => {
                 <input 
                 type="text" 
                 placeholder="Search by title or author"
-                value={qurey}
+                value={query}
                 onChange={handleChange}
                 />
               </div>
             </div>
             <div className="search-books-results">
               <ol className="books-grid">
-                <Shelf searchBooks={searchBooks} handleStatusChnage={handleStatusChnage} myBooks={books} books={foundBooks}/>
+                <Shelf 
+                searchBookShelf={searchBookShelf} 
+                handleStatusChnage={handleStatusChnage} 
+                myBooks={books} 
+                books={foundBooks.constructor === Array ? foundBooks : []}
+                />
               </ol>
             </div>
         </div>

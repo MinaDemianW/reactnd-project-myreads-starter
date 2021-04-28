@@ -28,7 +28,7 @@ const App = () => {
     setBooks(prevState => prevState.filter(bk => bk.id !== bookOnChange[1].id).concat(bookOnChange[0]))
   }
 
-  const searchBooks = (book) => {
+  const searchBookShelf = (book) => {
     if(booksIDS.includes(book.id)){
       return books.filter(bk => bk.id === book.id)[0].shelf
     }
@@ -37,10 +37,10 @@ const App = () => {
   return (
     <div className="app">
       <Route path="/" exact>
-        <BooksList searchBooks={searchBooks} handleStatusChnage={handleStatusChnage} books={books} />
+        <BooksList searchBookShelf={searchBookShelf} handleStatusChnage={handleStatusChnage} books={books} />
       </Route>
       <Route path="/search">
-        <SearchList searchBooks={searchBooks} handleStatusChnage={handleStatusChnage} books={books} />
+        <SearchList searchBookShelf={searchBookShelf} handleStatusChnage={handleStatusChnage} books={books} />
       </Route>
     </div>
   )
